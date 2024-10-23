@@ -45,6 +45,7 @@ test.only('Basic actions 002', async ({ page }) => {
     const imgInfo2 = img2.locator('.figcaption');
     const imgInfo3 = img3.locator('.figcaption');
 
+    //await page.pause(); // test will stop here - good for debugging --> RUN: npx playwright test --debug
     await img1.hover();
     await expect(imgInfo1).toBeVisible();
     await expect(imgInfo2).not.toBeVisible();
