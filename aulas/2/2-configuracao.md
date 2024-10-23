@@ -1,2 +1,0 @@
-# Configuração do projeto base
-
