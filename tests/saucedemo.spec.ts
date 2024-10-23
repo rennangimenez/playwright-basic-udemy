@@ -1,11 +1,11 @@
-import test, { expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test('Locating by data-test', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
     await page.getByTestId('username').fill('rennan');
 })
 
-test.only('Basic assertions', async ({ page }) => {
+test('Basic assertions', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/v1/');
     const loginBtn = await page.locator('input#login-button'); //input[id="login-button"]
     await expect.soft(loginBtn).toHaveCSS('background-color','rgb(225, 35, 26)'); //when using expct.soft the test will not stop if the validation FAIL
