@@ -1,4 +1,13 @@
 // https://the-internet.herokuapp.com/
+
+/*  Add this to the file settings.json (control + shift + P --> open user settings JSON)
+
+"editor.codeActionsOnSave":{
+        "source.fixAll": "explicit" 
+    },
+
+*/
+
 import { expect, test } from "@playwright/test";
 
 test('Basic actions 001', async ({ page }) => {
@@ -24,7 +33,7 @@ test('Basic actions 001', async ({ page }) => {
     await expect(checkbox1).toBeChecked();
 })
 
-test.only('Basic actions 002', async ({ page }) => {
+test('Basic actions 002', async ({ page }) => {
     // dropdwons
     await page.goto('https://the-internet.herokuapp.com/dropdown');
     const dropdown = page.locator('select#dropdown');
@@ -48,17 +57,17 @@ test.only('Basic actions 002', async ({ page }) => {
     //await page.pause(); // test will stop here - good for debugging --> RUN: npx playwright test --debug
     await img1.hover();
     await expect(imgInfo1).toBeVisible();
-    await expect(imgInfo2).not.toBeVisible();
-    await expect(imgInfo3).not.toBeVisible();
+    await expect(imgInfo2).toBeHidden();
+    await expect(imgInfo3).toBeHidden();
 
     await img2.hover();
-    await expect(imgInfo1).not.toBeVisible();
+    await expect(imgInfo1).toBeHidden();
     await expect(imgInfo2).toBeVisible();
-    await expect(imgInfo3).not.toBeVisible();
+    await expect(imgInfo3).toBeHidden();
 
     await img3.hover();
-    await expect(imgInfo1).not.toBeVisible();
-    await expect(imgInfo2).not.toBeVisible();
+    await expect(imgInfo1).toBeHidden();
+    await expect(imgInfo2).toBeHidden();
     await expect(imgInfo3).toBeVisible();
 
     await imgInfo3.getByRole('link').click();
