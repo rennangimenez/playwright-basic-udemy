@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 /** 
- * Test Suites
+ * Test Suite
  * Group 01 - Success login
  * Group 02 - Fail to login 
 */
@@ -36,6 +36,10 @@ test.describe('Login with success', async () => {
         const txtImgBackpack = page.locator('div.inventory_item_name').nth(0);
         await expect(txtImgBackpack).toBeVisible();
         await expect(txtImgBackpack).toHaveText('Sauce Labs Backpack');
+    })
+
+    test.afterAll(async () => {
+        console.log('Finishing successfull login test suit');
     })
 })
 
@@ -70,5 +74,13 @@ test.describe('Fail to login', async () => {
     
         await expect(txtErrorMessage).toBeVisible();
         await expect(txtErrorMessage).toHaveText('Epic sadface: Username and password do not match any user in this service');
+    })
+
+    test.afterEach(async () => {
+        console.log('Finishing each fail login tests');
+    })
+
+    test.afterAll(async () => {
+        console.log('Finishing fail login test suit');
     })
 })
