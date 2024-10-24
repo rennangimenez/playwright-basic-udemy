@@ -11,7 +11,12 @@
         "plugin:playwright/playwright-test",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
-    ]
+    ],
+    "rules": {
+        "indent": ["error", 4],
+        "no-multi-spaces": ["error"],
+        "playwright/missing-playwright-await": ["error"]
+    }
     // "rules": {
     //     "quotes": ["error", "single"],
     //     "semi": ["error", "always"],
