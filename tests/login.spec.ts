@@ -1,11 +1,30 @@
 import { expect, test } from "@playwright/test";
 
-// test suites
-// Group 01 - Success login
-// Group 02 - Fail to login 
+/**
+ * Test Hooks
+ * test.beforeEach
+ * test.beforeAll - executed 1x by worker
+ * test.afterEach
+ * test.afterAll - executed 1x by worker
+*/
+
+test.beforeEach(async ({ page }) => {
+    await page.goto('https://www.saucedemo.com/v1/');
+})
+
+/** 
+ * Test Suites
+ * Group 01 - Success login
+ * Group 02 - Fail to login 
+*/
+
 test.describe('Login with success', async () => {
+    test.beforeAll(async () => {
+        console.log('Starting successfull login test suit');
+    })
+
     test('Correct user and passwd - standard user', async({ page }) => {
-        await page.goto('https://www.saucedemo.com/v1/');
+        //await page.goto('https://www.saucedemo.com/v1/');
     
         await page.getByTestId('username').fill('standard_user');
         await page.getByTestId('password').fill('secret_sauce');
@@ -21,8 +40,12 @@ test.describe('Login with success', async () => {
 })
 
 test.describe('Fail to login', async () => {
+    test.beforeAll(async () => {
+        console.log('Starting fail login test suit');
+    })
+
     test('Login with locked user', async({ page }) => {
-        await page.goto('https://www.saucedemo.com/v1/');
+        //await page.goto('https://www.saucedemo.com/v1/');
     
         await page.getByTestId('username').fill('locked_out_user');
         await page.getByTestId('password').fill('secret_sauce');
@@ -36,7 +59,7 @@ test.describe('Fail to login', async () => {
     })
 
     test('Login error with wrong password', async({ page }) => {
-        await page.goto('https://www.saucedemo.com/v1/');
+        //await page.goto('https://www.saucedemo.com/v1/');
     
         await page.getByTestId('username').fill('standard_user');
         await page.getByTestId('password').fill('wrongpassword');
