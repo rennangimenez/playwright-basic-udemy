@@ -6,7 +6,7 @@ import { expect, test } from "@playwright/test";
 // user - standard_user
 // verify page URL
 // verify at least 1 item at the final page (visible)
-test('challenge 1', async({ page }) => {
+test('Success Login', async({ page }) => {
     await page.goto('https://www.saucedemo.com/v1/');
 
     await page.getByTestId('username').fill('standard_user');
@@ -41,7 +41,7 @@ test('challenge 1', async({ page }) => {
 // 2 - Login with locked user
 // user - locked_out_user
 // verify error message
-test('challenge 2', async({ page }) => {
+test('Login with locked user', async({ page }) => {
     await page.goto('https://www.saucedemo.com/v1/');
 
     await page.getByTestId('username').fill('locked_out_user');
@@ -75,9 +75,9 @@ test('challenge 2', async({ page }) => {
     */
 })
 
-// 3 - Login error - wrong password
+// 3 - Login error with wrong password
 // verify error message
-test('challenge 3', async({ page }) => {
+test('Login error with wrong password', async({ page }) => {
     await page.goto('https://www.saucedemo.com/v1/');
 
     await page.getByTestId('username').fill('standard_user');
